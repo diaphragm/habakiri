@@ -31,7 +31,7 @@ class Habakiri
         end
       end
 
-      key = match[0].delete_prefix(@prefix).delete_suffix(@suffix).chomp
+      key = match[0].delete_prefix(@prefix).delete_suffix(@suffix).strip
       object[key] = list.map(&:new_element).join.strip
     }
   end
