@@ -2,19 +2,18 @@ require 'habakiri/version'
 require 'diff/lcs'
 
 class Habakiri
-  def initialize(prefix = '{{', suffix = '}}')
-    @prefix = prefix
-    @suffix = suffix
+  def initialize(template, prefix = '{{', suffix = '}}')
+    @prefix = prefix.to_s
+    @suffix = suffix.to_s
+    @template = template.to_s
+    @keywords = keywords
   end
 
-  def exec(template, text)
-    diffs = Diff::LCS.sdiff(template.to_s, text.to_s)
-    matches = template.to_enum(:scan, /#{@prefix}.+?#{@suffix}/).map{ Regexp.last_match }
+  def exec(text)
+    diffs = Diff::LCS.sdiff(@template, text.to_s)
 
-    matches.each.with_object({}){|match, object|
-      start = match.begin(0)
-      last = match.end(0)
-      range = start...last
+    @keywords.each.with_object({}){|(key, first, last), object|
+      range = first...last
       list = diffs.select{|d| range.include?(d.old_position) }
 
       # 改行後の追加要素も対応する文字列とみなす
@@ -31,14 +30,23 @@ class Habakiri
         end
       end
 
-      key = match[0].delete_prefix(@prefix).delete_suffix(@suffix).strip
       object[key] = list.map(&:new_element).join.strip
+    }
+  end
+
+  private
+
+  def keywords
+    @template.to_enum(:scan, /#{@prefix}.+?#{@suffix}/).map{
+      m = Regexp.last_match
+      key = m[0].delete_prefix(@prefix).delete_suffix(@suffix).strip
+      [key, m.begin(0), m.end(0)]
     }
   end
 
   class << self
     def exec(template, text)
-      new.exec(template, text)
+      new(template).exec(text)
     end
   end
 end
