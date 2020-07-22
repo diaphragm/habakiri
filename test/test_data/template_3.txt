@@ -1,0 +1,7 @@
+YOUR NAME：{{name}}
+EMAIL:{{email}}
+TELEPHONE NUMBER：{{tel}}
+Website URL：{{url}}
+ZIP CODE：{{zipcode}}
+ADDRESS:{{address}}
+NOTE：{{note}}

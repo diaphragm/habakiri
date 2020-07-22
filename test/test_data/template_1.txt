@@ -1,0 +1,10 @@
+名前：{{name}}
+メールアドレス：{{email}}
+電話番号：{{tel}}
+URL：{{url}}
+郵便番号：{{zipcode}}
+住所：{{address}}
+駅名：{{station}}
+メモ1：{{memo1}}
+メモ2：{{memo2}}
+備考：{{note}}

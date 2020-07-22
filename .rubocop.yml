@@ -1,0 +1,188 @@
+---
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - /**/vendor/**/*
+
+# auto fixで壊れるのでdisableにする
+Lint/SafeNavigationWithEmpty:
+  Enabled: false
+
+# /が規定数以上のRegexpは%rを使えと言われるがどうでもいい
+Style/RegexpLiteral:
+  Enabled: false
+
+# MethodChainのdotを揃えるとかどうでもいい
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
+# 複数行にわたる演算のインデント
+Layout/MultilineOperationIndentation:
+  Enabled: false
+
+# Gemのソート。どうでもいい
+Bundler/OrderedGems:
+  Enabled: false
+Gemspec/OrderedDependencies:
+  Enabled: false
+
+# HashLiteralの空白
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
+
+# 0 < hoge && hoge <= 12は使う
+Style/YodaCondition:
+  EnforcedStyle: forbid_for_equality_operators_only
+
+# WordArrayを強制する理由が思い付かない
+Style/WordArray:
+  Enabled: false
+Style/SymbolArray:
+  Enabled: false
+
+# 条件演算子の()は要らないが、複雑な場合付けた方が見やすく、そしてそれを強制もしたくない
+Style/TernaryParentheses:
+  Enabled: false
+
+# selfあって困らんし読みやすいが強制するほどでもない
+Style/RedundantSelf:
+  Enabled: false
+
+# 例外の引数。newで統一されているので変える必要を感じない
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
+# hoge == 0よりhoge.zero?の方が素晴らしいとは思わなんだ
+Style/NumericPredicate:
+  Enabled: false
+
+# nextは事実上の限定されたgotoであり、積極的に推奨する理由はない
+Style/Next:
+  Enabled: false
+
+# 何がわるいのか分からんので切る
+Style/MixinUsage:
+  Enabled: false
+
+# 文字列連結に+で駄目な理由が思いつかない
+Style/LineEndConcatenation:
+  Enabled: false
+
+# 後置ifを強制する理由はない
+Style/IfUnlessModifier:
+  Enabled: false
+Style/GuardClause:
+  Enabled: false
+
+# ifを入れ子にした方が構造が分かりやすいこともある
+Style/IfInsideElse:
+  Enabled: false
+
+# freeze面倒くさい
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 空のMethodを1行で書くモチベが分からない
+Style/EmptyMethod:
+  Enabled: false
+
+# case whenでelseを常に書くのは良い風習であり、不要なelse nilを消す設定は矛盾する
+Style/EmptyElse:
+  Enabled: false
+
+# Documentを強制しない。ゴミみたいなDocumentが濫造される。名前とコードで示せ
+Style/Documentation:
+  Enabled: false
+
+# MultiLineのBlock強制。要らない
+Style/BlockDelimiters:
+  Enabled: false
+
+# 日本語でコメントすればよい
+Style/AsciiComments:
+  Enabled: false
+
+# nestの深いmoduleのインデントが深くなるので切る
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# HeredocのDelimiter名に意味のある名前を付けろという話らしいが意味がわからない
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+# クラス変数。基本使うなだけど簡易Cacheとかには便利
+Style/ClassVars:
+  Enabled: false
+
+# 日時formatに誤爆する。信用できない
+Style/FormatStringToken:
+  Enabled: false
+
+# Branchの最後の処理が同じものをエラー。誤爆が多い
+Style/IdenticalConditionalBranches:
+  Enabled: false
+
+# 気持ち悪い
+Layout/FirstHashElementIndentation:
+  Enabled: false
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: false
+Layout/SpaceBeforeBlockBraces:
+  EnforcedStyle: no_space
+
+# 厳しすぎ
+Metrics/AbcSize:
+  Max: 35
+Metrics/CyclomaticComplexity:
+  Max: 12
+Metrics/MethodLength:
+  Max: 30
+
+# v0.8対応
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+Style/HashEachMethods:
+  Enabled: true
+Style/HashTransformKeys:
+  Enabled: true
+Style/HashTransformValues:
+  Enabled: true
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+Style/ExponentialNotation:
+  Enabled: true
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+Lint/DeprecatedOpenSSLConstant:
+  Enabled: true
+Lint/DuplicateElsifCondition:
+  Enabled: true
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+Style/AccessorGrouping:
+  Enabled: true
+Style/ArrayCoercion:
+  Enabled: true
+Style/BisectedAttrAccessor:
+  Enabled: true
+Style/CaseLikeIf:
+  Enabled: true
+Style/HashAsLastArrayItem:
+  Enabled: true
+Style/HashLikeCase:
+  Enabled: true
+Style/RedundantAssignment:
+  Enabled: true
+Style/RedundantFetchBlock:
+  Enabled: true
+Style/RedundantFileExtensionInRequire:
+  Enabled: true
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/RedundantRegexpEscape:
+  Enabled: true
+Style/SlicingWithRange:
+  Enabled: true

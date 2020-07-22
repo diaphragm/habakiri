@@ -1,0 +1,10 @@
+YOUR NAME：John
+EMAIL:email@email.com
+TELEPHONE NUMBER：+199999999
+Website URL：https://example.com/website/url
+ZIP CODE：000-0000
+ADDRESS:San Francisco, CA 94107 United States
+NOTE：
+Hello, world!
+Hello, ruby!
+Hello, habakiri!
