@@ -12,12 +12,13 @@ class Habakiri
   def exec(text)
     diffs = Diff::LCS.sdiff(@template, text.to_s)
 
-    @keywords.each.with_object({}){|(key, first, last), object|
-      range = first...last
-      list = diffs.select{|d| range.include?(d.old_position) }
+    @keywords.each.with_object({}){|(key, key_begin, key_end), object|
+      index_begin = diffs.index{|d| d.old_position == key_begin }
+      index_end = diffs.index{|d| d.old_position == key_end }
+      list = diffs[index_begin...index_end]
 
       # 改行後の追加要素も対応する文字列とみなす
-      i = diffs.index{|d| d.old_position == last }
+      i = index_end
       if i
         loop do
           diff = diffs[i]
