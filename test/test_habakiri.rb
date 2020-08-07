@@ -50,4 +50,22 @@ class HabakiriTest < Minitest::Unit::TestCase
     assert_equal('San Francisco, CA 94107 United States', result['address'])
     assert_equal("Hello, world!\nHello, ruby!\nHello, habakiri!", result['note'])
   end
+
+  def test_case_4
+    template = File.read('test/test_data/template_4.txt')
+    text = File.read('test/test_data/text_4.txt')
+    result = Habakiri.exec(template, text)
+
+    assert_instance_of(Hash, result)
+    dup = result['dup']
+    multi = result['multi']
+    alone = result['alone']
+    single = result['single']
+    assert_instance_of(Array, dup)
+    assert_instance_of(Array, multi)
+    assert_equal(['テストテスト', 'test.test@example.com', '100-0001', '東京都千代田区1-1-1'], dup)
+    assert_equal(['01201234567', 'https://example.com/path/to/homepage/1232', 'メモメモ', 'メモメモ2'], multi)
+    assert_equal('東京駅', alone)
+    assert_equal('備考備考', single)
+  end
 end
