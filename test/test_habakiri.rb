@@ -11,11 +11,13 @@ class HabakiriTest < Minitest::Unit::TestCase
     assert_equal('テストテスト', result['name'])
     assert_equal('test.test@example.com', result['email'])
     assert_equal('01201234567', result['tel'])
+    assert_equal('https://example.com/path/to/homepage/1232', result['url'])
     assert_equal('100-0001', result['zipcode'])
     assert_equal('東京都千代田区1-1-1', result['address'])
     assert_equal('東京駅', result['station'])
     assert_equal('メモメモ', result['memo1'])
     assert_equal('メモメモ2', result['memo2'])
+    assert_equal('', result['blank'])
     assert_equal('備考備考', result['note'])
   end
 

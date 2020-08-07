@@ -7,4 +7,5 @@ URL：{{url}}
 駅名：{{station}}
 メモ1：{{memo1}}
 メモ2：{{memo2}}
+空白：{{blank}}
 備考：{{note}}
