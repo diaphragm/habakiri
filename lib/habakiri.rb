@@ -31,7 +31,15 @@ class Habakiri
         end
       end
 
-      object[key] = list.map(&:new_element).join.strip
+      value = list.map(&:new_element).join.strip
+      case object[key]
+      when nil
+        object[key] = value
+      when String
+        object[key] = [object[key], value]
+      when Array
+        object[key] << value
+      end
     }
   end
 
